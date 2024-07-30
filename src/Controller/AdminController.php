@@ -20,7 +20,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin', name: 'admin_')]
 class AdminController extends AbstractController
 {
-
     /**
      * Route displaying all bookings for admin uses
      * @param BookingRepository $bookingRepository

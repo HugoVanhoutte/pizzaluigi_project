@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Booking;
 use App\Entity\Review;
 use App\Entity\Post;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -13,7 +14,6 @@ use Faker\Generator;
 class AppFixtures extends Fixture
 {
     private Generator $faker;
-
     public function __construct()
     {
         $this->faker = Factory::create('fr');
@@ -51,6 +51,16 @@ class AppFixtures extends Fixture
                 ->setContent($this->faker->paragraph())
                 ;
             $manager->persist($post);
+        }
+
+        for ($i = 1; $i < 50; $i++) {
+            $user = new User();
+            $user
+                ->setEmail($this->faker->email())
+                ->setPlainPassword('password')
+                ->setRoles(['ROLE_USER'])
+            ;
+            $manager->persist($user);
         }
 
         $manager->flush();
