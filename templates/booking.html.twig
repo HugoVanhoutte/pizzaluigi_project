@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% set today = "now"|date("Y-m-d") %}
+{% block body %}
+<div id="container">
+    <div id="title-container" class="text-gold bg-dark h-16 w-full">
+        <h1 class="font-title text-6xl text-center">Réservation</h1>
+    </div>
+    <div class="form-container">
+        {{ form_start(form) }}
+        <div class="form-field-container">
+            {{ form_errors(form.datetime) }}
+            {{ form_label(form.datetime) }}
+            {{ form_widget(form.datetime) }}
+        </div>
+        <div class="form-field-container">
+            {{ form_errors(form.name) }}
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+        <div class="form-field-container">
+            {{ form_errors(form.email) }}
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+        </div>
+        <div class="form-field-container">
+            {{ form_errors(form.phone) }}
+            {{ form_label(form.phone) }}
+            {{ form_widget(form.phone) }}
+        </div>
+        <div class="form-field-container">
+            {{ form_errors(form.guests) }}
+            {{ form_label(form.guests) }}
+            {{ form_widget(form.guests) }}
+        </div>
+        <div>
+            {{ form_row(form.submit) }}
+        </div>
+    </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

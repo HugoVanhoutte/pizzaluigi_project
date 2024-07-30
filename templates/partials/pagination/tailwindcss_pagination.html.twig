@@ -1,0 +1,50 @@
+{# tailwindcss Sliding pagination control implementation #}
+{% if pageCount > 1 %}
+    <div class="inline-block">
+        <div class="flex items-baseline flex-row w-auto bg-light">
+        {% if first is defined and current != first %}
+                <a href="{{ path(route, query|merge({(pageParameterName): first})) }}">
+                    <span class="bg-dark text-gold p-2 text-lg border-2 border-gold rounded-full font-bold m-2">
+                        &lt;&lt;
+                    </span>
+                </a>
+        {% endif %}
+
+        {% if previous is defined %}
+                <a rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">
+                    <span class="bg-dark text-gold p-2 text-lg border-2 border-gold rounded-full m-2">
+                        &lt;
+                    </span>
+                </a>
+        {% endif %}
+
+        {% for page in pagesInRange %}
+            {% if page != current %}
+                    <a href="{{ path(route, query|merge({(pageParameterName): page})) }}">
+                        <span class="bg-dark text-gold p-2 text-lg border-2 border-gold rounded-full m-2">
+                            {{ page }}
+                        </span>
+                    </a>
+            {% else %}
+                <span class="bg-gold border-2 border-dark text-dark p-2 text-lg font-bold rounded-full m-2 w-1/12">{{ page }}</span>
+            {% endif %}
+        {% endfor %}
+
+        {% if next is defined %}
+                <a rel="next" href="{{ path(route, query|merge({(pageParameterName): next})) }}">
+                    <span class="bg-dark text-gold p-2 text-lg border-2 border-gold rounded-full m-2 ">
+                        &gt;
+                    </span>
+                </a>
+        {% endif %}
+
+        {% if last is defined and current != last %}
+                <a href="{{ path(route, query|merge({(pageParameterName): last})) }}">
+                    <span class="bg-dark text-gold p-2 text-lg border-2 border-gold rounded-full font-bold m-2">
+                        &gt;&gt;
+                    </span>
+                </a>
+        {% endif %}
+        </div>
+    </div>
+{% endif %}

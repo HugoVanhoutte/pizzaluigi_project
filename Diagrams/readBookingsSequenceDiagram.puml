@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+header Admin Booking Read << Luigi's Pizza >> Sequence Diagram (v.1.0)
+Title Booking Creation <<  Luigi's Pizza  >> Sequence diagram (v.1.0)
+autonumber
+Admin -> System :sends request to system
+System -> Database :sends request to DB
+Database -> System :sends data to be displayed in view
+System -> Admin : displays formatted data to admin
+@enduml

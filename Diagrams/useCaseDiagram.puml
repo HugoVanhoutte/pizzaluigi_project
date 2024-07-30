@@ -1,0 +1,77 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+skinparam actorStyle awesome
+skinparam linetype ortho
+
+Title <<  Luigi's Pizza  >> Use Diagram (whole project v.1.0)
+
+actor Utilisateur as User
+actor Restaurateur as Admin #red;line:darkred;line.bold
+
+
+    Package "Consulter les données" as (Read) {
+        usecase "readReviews"
+        usecase "readMenu"
+
+        Package "Admin Uniquement" as (readAdminOnly)#pink;line:red;text:red {
+            usecase (readBookings)
+        }
+    }
+
+    Package "Creation des données" as (Create) {
+        usecase (createBooking)
+        usecase (createReview)
+
+        Package "Admin Uniquement" as createAdminOnly#pink;line:red;text:red {
+        usecase (createPost)
+        }
+}
+    Package "Mettre à jour les données" as (Update) {
+        Package "Admin Uniquement" as (updateAdminOnly)#pink;line:red;text:red {
+        usecase (editPost)
+        usecase (editMenu)
+        }
+    }
+
+    Package "Supprimer des données" as (Delete) {
+        usecase (deleteReview)
+
+        Package "Admin uniquement" as (deleteAdminOnly) #pink;line:red;text:red{
+        usecase (deletePost)
+        }
+    }
+
+
+
+"Réserver une table" as (createBooking)
+"Poster un avis" as (createReview)
+"Poster une nouveauté" as (createPost)
+"Consulter le menu" as (readMenu)
+"Modifier une nouveauté" as (editPost)
+"Modifier le menu" as (editMenu)
+"Consulter les avis" as (readReviews)
+"Consulter les réservations" as (readBookings)
+"Supprimer un post" as (deletePost)
+"Supprimer un avis" as (deleteReview)
+
+
+User -d-> (createBooking)
+User -d-> (createReview)
+User -d-> (readReviews)
+User -d-> (readMenu)
+User -d-> (deleteReview)
+
+Admin -u-> (createPost)
+Admin -u-> (editPost)
+Admin -u-> (deletePost)
+Admin -u-> (editMenu)
+Admin -u-> (deleteReview)
+Admin -u-> (readBookings)
+
+note "étend" as extends
+
+Admin ...u..> extends
+
+extends ..> User
+
+@enduml

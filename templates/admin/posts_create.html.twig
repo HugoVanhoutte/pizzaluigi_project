@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Luigi's Pizza | Administration - Nouveautés
+{% endblock %}
+
+{% block body %}
+    <div id="container" class="flex flex-col">
+        {% include 'admin/partials/_menu.html.twig' %}
+        {% include 'admin/partials/posts_menu.html.twig' %}
+
+
+        <div class="form-container">
+            {{ form_start(form) }}
+            <div class="form-field-container">
+                {{ form_label(form.title) }}
+                {{ form_errors(form.title) }}
+                {{ form_widget(form.title) }}
+            </div>
+            <div class="form-field-container">
+                {{ form_label(form.content) }}
+                {{ form_errors(form.content) }}
+                {{ form_widget(form.content) }}
+            </div>
+            <div class="form-field-container">
+                {{ form_label(form.picture) }}
+                {{ form_errors(form.picture) }}
+                {{ form_widget(form.picture) }}
+            </div>
+            <div>
+                {{ form_row(form.submit) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

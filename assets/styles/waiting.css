@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Quintessential&family=Rouge+Script&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face{
+    font-family: 'Digital Clock';
+    src: url('../fonts/DS-DIGIB.TTF')
+}
+
+:root {
+    --gold: #C5AB6B;
+    --dark: #1A1C20;
+    --light: #FFFCF3;
+}
+
+body {
+    background-color: var(--dark);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    width: auto;
+    height: 20svh;
+    margin: 2svh;
+}
+
+h1, h2, p, b {
+    color: var(--gold);
+}
+
+h1 {
+    font-family: 'Rouge Script', cursive;
+    font-weight: 200;
+    font-size: 5svh;
+
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Quintessential', cursive;
+    font-size: 3.5svh;
+
+    font-weight: bolder;
+}
+
+
+p {
+    font-family: 'Quintessential', cursive;
+    font-size: 3svh;
+
+    margin: 1svh;
+}
+
+
+b {
+    font-family: 'Digital Clock', sans-serif;
+    font-size: 5svh;
+}

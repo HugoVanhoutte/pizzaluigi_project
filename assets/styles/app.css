@@ -1,3 +1,96 @@
-body {
-    background-color: skyblue;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face{
+    font-family: 'Digital Clock';
+    src: url('../fonts/DS-DIGIB.TTF')
+}
+
+@layer base {
+    #container, .container {
+        @apply flex flex-col justify-center items-center w-full bg-light
+    }
+
+    .card {
+        @apply bg-gold text-dark flex flex-col sm:flex-row sm:items-center w-10/12 h-auto rounded-2xl m-4 md:flex-col md:h-96 border border-gold shadow-card-shadow overflow-y-scroll scrollbar-hidden;
+    }
+
+    .card img {
+        @apply w-full h-auto sm:h-fit sm:m-3 sm:w-5/12 md:m-0 mb-0 mr-4 rounded-2xl md:mr-0 md:w-full md:h-auto
+    }
+
+    .card .main-text {
+        @apply block p-1 md:p-2
+    }
+
+    .button {
+        @apply block bg-dark rounded-full p-2 m-1 font-bold text-gold text-xl hover:underline text-center w-52 cursor-pointer
+    }
+
+    .form-field-container {
+        @apply flex flex-col justify-center text-center items-center w-full bg-light
+    }
+
+    .form-label {
+        @apply font-sub-title text-dark text-3xl
+    }
+
+    .form-input, .form-input-container div select {
+        @apply m-3 border border-gold rounded-full p-2 text-dark
+    }
+
+    .form-input:focus-visible {
+        outline-color: #C5AB6B;
+        /* Gold color variable (not working with css variable) */
+
+    }
+
+    textarea.form-input {
+        @apply rounded-xl
+    }
+
+    svg.star {
+       @apply w-2/12 h-5/6
+    }
+
+    .tab-container {
+        @apply flex flex-row w-full justify-stretch
+    }
+
+    .tab {
+        @apply block bg-gold border border-dark text-center font-text cursor-pointer
+    }
+
+    .tab.active {
+        @apply font-bold
+    }
+
+    .admin-table {
+        @apply table-auto w-full border-collapse
+    }
+
+    .admin-table th {
+        @apply bg-gold text-start border border-dark p-1
+    }
+
+    .admin-table tr {
+        @apply hover:bg-gold/30
+    }
+
+    .admin-table td {
+        @apply border border-dark p-1
+    }
+}
+
+@layer utilities {
+    .scrollbar-hidden {
+        /* Hides scrollbar for IE, Edge and Firefox */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    .scrollbar-hidden::webkit-scrollbar {
+        display: none;
+    }
 }

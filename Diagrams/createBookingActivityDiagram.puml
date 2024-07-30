@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+Title <<  Luigi's Pizza  >> Booking Activity diagram (v.1.0)
+
+start
+repeat
+:User enters Booking creation form page;
+if (User submits form) then (HTML/JS validated)
+if (Backend validation) then (PHP Validated)
+#palegreen;line:green;:send sanitized form data to DB;
+stop
+else (PHP invalidated)
+#pink;line:red;:Backend invalidated:\npotential malicious action\nsend user back to form;
+endif
+else (HTML/JS invalidated)
+#pink;line:red;:Frontend invalidated\nUser input error\nsend user back to form;
+@enduml

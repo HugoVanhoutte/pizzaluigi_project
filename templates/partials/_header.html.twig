@@ -1,0 +1,24 @@
+
+<header class="md:bg-dark bg-transparent text-gold flex flex-col md:flex-row sticky top-0  justify-around w-full md:space-x-48">
+    <div class="flex flex-row md:flex-col justify-between items-center bg-dark">
+        <a class="w-32 h-auto mt-2 mb-2" href="{{ path('app_landing') }}" >
+            <img src="{{ asset('images/logo.png') }}" alt="logo" class="size-full">
+        </a>
+        <a id="nav-button" class="md:hidden block w-10 m-2 cursor-pointer shrink-0">
+            <svg id="menu-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#c6ac6c" d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
+            <svg id="menu-close" class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path  fill="#c6ac6c" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </a>
+    </div>
+    <nav class="md:flex md:flex-row w-full md:w-4/12 items-center hidden flex-col bg-dark md:bg-dark">
+        <a href="{{ path('app_menu') }}" class="hover:decoration-1 hover:underline text-2xl font-text w-full text-center md:w-4/12">Menu</a>
+        <a href="{{ path('app_reviews_create') }}" class="hover:decoration-1 hover:underline text-2xl font-text w-full text-center md:w-4/12">Avis</a>
+        <a href="{{ path('app_booking') }}" class="hover:decoration-1 hover:underline text-2xl font-text w-full text-center md:w-4/12 shrink-0">Réserver</a>
+    </nav>
+</header>
+
+{% for message in app.flashes('success') %}
+    <div class="w-full text-center font-sub-title bg-green-500 text-dark text-xl">
+        {{ message }}
+    </div>
+{% endfor %}
+<script src="{{ asset('js/burger-menu.js') }}"></script>

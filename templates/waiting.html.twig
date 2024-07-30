@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Luigi's Pizza | Bientôt disponible!
+{% endblock %}
+{#
+{% block stylesheets %}
+    <link rel="stylesheet" href="../assets/styles/waiting.css">
+    <link rel="stylesheet" href="../assets/styles/footer.css.archived">
+{% endblock %}
+#}
+{% block header %}
+{% endblock %}
+
+{% block body %}
+    <div id="container bg-dark" class="bg-dark text-gold flex flex-col items-center">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-4/12 md:w-2/12  mt-3">
+        <h1 class="font-title text-7xl text-center">Bien plus qu'un restaurant italien</h1>
+
+        <h2 class="font-sub-title text-5xl decoration-1 underline">Arrive dans : </h2>
+
+        <p class="font-text text-2xl"><b id="days" class="font-digital text-3xl"></b> Jours</p>
+        <p class="font-text text-2xl"><b id="hours" class="font-digital text-3xl"></b> Heures</p>
+        <p class="font-text text-2xl"><b id="minutes" class="font-digital text-3xl"></b> Minutes</p>
+        <p class="font-text text-2xl"><b id="seconds" class="font-digital text-3xl"></b> Secondes</p>
+        <script src="{{ asset('js/waiting.js') }}"></script>
+    </div>
+{% endblock %}

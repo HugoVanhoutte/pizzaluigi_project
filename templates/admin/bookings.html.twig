@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Luigi's Pizza | Administration - Réservations
+{% endblock %}
+
+
+{% block body %}
+    <div id="container" class="flex flex-col">
+        {% include 'admin/partials/_menu.html.twig' %}
+
+        {# display navigation #}
+        <div class="navigation">
+            {{ knp_pagination_render(bookings, 'partials/pagination/tailwindcss_pagination.html.twig') }}
+        </div>
+
+        <table class="admin-table">
+            <tr>
+                <th>Date/Heure</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Supprimer</th>
+            </tr>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.datetime|date('d/m/Y h:i') }}</td>
+                    <td>{{ booking.name }}</td>
+                    <td>{{ booking.email }}</td>
+                    <td>{{ booking.phone }}</td>
+                    <td class="text-center">
+                        <a href="#" class="text-red-600 m-5 hover:text-red-400">
+                            <i class="fa-solid fa-trash fa-xl hover:fa-fade"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% if bookings is empty %}
+            <h1>Aucune réservation trouvée</h1>
+        {% endif %}
+        {# display navigation #}
+        <div class="navigation">
+            {{ knp_pagination_render(bookings, 'partials/pagination/tailwindcss_pagination.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

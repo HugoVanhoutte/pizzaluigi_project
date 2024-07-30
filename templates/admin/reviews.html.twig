@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Luigi's Pizza | Administration - Avis
+{% endblock %}
+
+{% block body %}
+    <div id="container" class="flex flex-col">
+        {% include 'admin/partials/_menu.html.twig' %}
+
+        {# display navigation #}
+        <div class="navigation">
+            {{ knp_pagination_render(reviews, 'partials/pagination/tailwindcss_pagination.html.twig')}}
+        </div>
+
+        <table class="admin-table">
+            <tr>
+                <th>Date/Heure</th>
+                <th>Nom</th>
+                <th>Contenu</th>
+                <th>review</th>
+                <th>Supprimer</th>
+            </tr>
+            {% for review in reviews %}
+                <tr>
+                    <td>{{ review.createdAt|date('d/m/Y h:i') }}</td>
+                    <td>{{ review.name }}</td>
+                    <td>{{ review.content }}</td>
+                    <td>{{ review.note }}/5</td>
+                    <td class="text-center">
+                        <a href="#" class="text-red-600 m-5 hover:text-red-400">
+                            <i class="fa-solid fa-trash fa-xl hover:fa-fade"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% if reviews is empty %}
+            <h1>Aucun avis disponible</h1>
+        {% endif %}
+        {# display navigation #}
+        <div class="navigation">
+            {{ knp_pagination_render(reviews, 'partials/pagination/tailwindcss_pagination.html.twig')}}
+        </div>
+    </div>
+{% endblock %}

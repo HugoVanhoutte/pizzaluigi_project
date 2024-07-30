@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="container">
+        <div id="title-container" class="text-gold bg-dark h-16 w-full">
+            <h1 class="font-title text-6xl text-center">Carte</h1>
+        </div>
+            <embed
+                    src="{{ asset('images/menu.pdf') }}"
+                    type="application/pdf"
+                    frameBorder="0"
+                    height="600px"
+                    class="
+                        w-full
+                    "
+            >
+    </div>
+{% endblock %}

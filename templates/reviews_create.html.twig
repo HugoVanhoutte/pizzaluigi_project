@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Luigi's Pizza | Administration - Avis
+{% endblock %}
+
+{% block body %}
+    <div id="container" class="flex flex-col">
+
+
+        <div class="form-container">
+            {{ form_start(form) }}
+            <div class="form-field-container">
+                {{ form_errors(form.name) }}
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="form-field-container">
+                {{ form_errors(form.content) }}
+                {{ form_label(form.content) }}
+                {{ form_widget(form.content) }}
+            </div>
+            <div class="form-field-container">
+                {{ form_errors(form.note) }}
+                {{ form_label(form.note) }}
+                {{ form_widget(form.note) }}
+            </div>
+            <div>
+                {{ form_row(form.submit) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

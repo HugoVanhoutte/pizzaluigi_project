@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+header Booking Creation <<  Luigi's Pizza  >> Sequence diagram (v.1.0)
+Title Booking Creation <<  Luigi's Pizza  >> Sequence diagram (v.1.0)
+autonumber
+
+activate User
+activate "Frontend Validation"
+"User" -> "Frontend Validation": Fills booking form
+"Frontend Validation" -[#red]> "User": Frontend validation incorrect\nsend user back to form with error message
+activate "Backend validation"
+"Frontend Validation" -[#green]> "Backend validation": Frontend validation correct\nsend to server for Backend validation
+deactivate "Frontend Validation"
+"Backend validation" -[#red]> "User": Backend validation incorrect:\nsend user back to form with error message
+activate "Database"
+"Backend validation" -[#green]> "Database": Backend validation correct:\nsend sanitized form data to DB
+"Backend validation" -[#green]> "User": sends flash message to user
+deactivate "Database"
+deactivate "Frontend Validation"
+deactivate "User"
+
+footer Booking <<  Luigi's Pizza  >> Sequence diagram (v.1.0)
+@enduml
