@@ -54,7 +54,7 @@ class PostType extends AbstractType
                 'attr' => [
                     'class' => 'button',
                 ],
-                'label' => 'Réserver'
+                'label' => 'Publier'
             ])
         ;
     }

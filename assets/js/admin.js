@@ -1,8 +1,8 @@
 //Whole file starts after DOM is loaded to ensure that buttons are loaded.
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
     let bookingButton = document.querySelector('#booking-button');
     let newsButton = document.querySelector('#news-button');
-    let notesButton = document.querySelector('#notes-button');
+    let reviewsButton = document.querySelector('#reviews-button');
     let pageName = window.location.href
 
     let pageNameStart = pageName.lastIndexOf('/') + 1
@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             newsButton.classList.add('active');
             break;
         }
-        case 'notes': {
-            notesButton.classList.add('active');
+        case 'reviews': {
+            reviewsButton.classList.add('active');
             break;
         }
         default: break;

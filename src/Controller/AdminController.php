@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
 use App\Entity\Post;
+use App\Entity\Review;
 use App\Form\PostType;
 use App\Repository\BookingRepository;
 use App\Repository\ReviewRepository;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,6 +41,19 @@ public function adminBookings(BookingRepository $bookingRepository, PaginatorInt
             'bookings' => $bookings,
         ]);
     }
+    #[Route('/booking/delete/{id}', name: 'bookings_delete', methods: ['GET'])]
+    public function adminBookingsDelete(Booking $booking, EntityManagerInterface $manager): Response
+    {
+        $manager->remove($booking);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            'Réservation supprimée !'
+        );
+
+        return $this->redirectToRoute('admin_bookings');
+    }
 
     /**
      * Route displaying all reviews for admin uses
@@ -60,6 +74,20 @@ public function adminReviews(ReviewRepository $reviewRepository, PaginatorInterf
     return $this->render('admin/reviews.html.twig', [
         'reviews' => $reviews,
     ]);
+}
+
+#[Route('/reviews/delete/{id}', name: 'reviews_delete', methods: ['GET'])]
+public function adminReviewsDelete(Review $review, EntityManagerInterface $manager): Response
+{
+    $manager->remove($review);
+    $manager->flush();
+
+    $this->addFlash(
+        'success',
+        'Avis supprimé'
+    );
+
+    return $this->redirectToRoute('admin_reviews');
 }
 
     /**
@@ -124,7 +152,6 @@ public function adminPostsCreate(
      * @return Response
      */
     #[Route('/posts/edit/{id}', name: 'posts_edit', methods: ['GET', 'POST'])]
-    #[ParamConverter("post", class: "App\Entity\Post")]
 public function adminPostsEdit(Post $post, Request $request, EntityManagerInterface $manager) : Response {
 
         $form = $this->createForm(PostType::class, $post);

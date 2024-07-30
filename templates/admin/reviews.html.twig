@@ -18,7 +18,7 @@
                 <th>Date/Heure</th>
                 <th>Nom</th>
                 <th>Contenu</th>
-                <th>review</th>
+                <th>Note</th>
                 <th>Supprimer</th>
             </tr>
             {% for review in reviews %}
@@ -28,7 +28,7 @@
                     <td>{{ review.content }}</td>
                     <td>{{ review.note }}/5</td>
                     <td class="text-center">
-                        <a href="#" class="text-red-600 m-5 hover:text-red-400">
+                        <a href="{{ path('admin_reviews_delete', {id: review.id}) }}" class="text-red-600 m-5 hover:text-red-400">
                             <i class="fa-solid fa-trash fa-xl hover:fa-fade"></i>
                         </a>
                     </td>

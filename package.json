@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "postcss-import": "^16.1.0",
+    "postcss-url": "^10.1.3"
+  }
+}

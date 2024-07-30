@@ -27,10 +27,10 @@
                 {{ form_errors(form.picture) }}
                 {{ form_widget(form.picture) }}
             </div>
-            <div>
+            <div class="form-field-container">
                 {{ form_row(form.submit) }}
             </div>
+            {{ form_end(form) }}
         </div>
-        {{ form_end(form) }}
     </div>
 {% endblock %}

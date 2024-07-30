@@ -29,7 +29,7 @@
                     <td>{{ booking.email }}</td>
                     <td>{{ booking.phone }}</td>
                     <td class="text-center">
-                        <a href="#" class="text-red-600 m-5 hover:text-red-400">
+                        <a href="{{ path('admin_bookings_delete', {id: booking.id}) }}" class="text-red-600 m-5 hover:text-red-400">
                             <i class="fa-solid fa-trash fa-xl hover:fa-fade"></i>
                         </a>
                     </td>
