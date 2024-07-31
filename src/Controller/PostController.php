@@ -11,7 +11,7 @@ class PostController extends AbstractController
     #[Route('/', name: 'app_post')]
     public function index(): Response
     {
-        return $this->render('post/index.html.twig', [
+        return $this->render('post/login.html.twig', [
         ]);
     }
 }
